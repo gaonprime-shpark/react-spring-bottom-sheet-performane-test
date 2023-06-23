@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import * as Portal from '@radix-ui/react-portal';
+import * as Portal from '@radix-ui/react-portal'
 import React, { forwardRef, useRef, useState, useCallback } from 'react'
 import { BottomSheet as _BottomSheet } from './BottomSheet'
 import type { Props, RefHandles, SpringEvent } from './types'
