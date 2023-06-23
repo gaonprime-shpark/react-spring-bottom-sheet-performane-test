@@ -45,7 +45,8 @@ export function useScrollLock({
         if (active) return
         active = true
         disableBodyScroll(target, {
-          allowTouchMove: (el) => el.closest('[data-body-scroll-lock-ignore]'),
+          allowTouchMove: (el) =>
+            el.closest('[data-body-scroll-lock-ignore]') ? true : false,
           reserveScrollBarGap,
         })
       },
