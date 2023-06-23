@@ -94,7 +94,7 @@ export const BottomSheet = React.forwardRef<
   }, [onSpringCancel, onSpringStart, onSpringEnd])
 
   // Behold, the engine of it all!
-  const [spring, set] = useSpring()
+  const [spring, api] = useSpring()
 
   const containerRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -158,12 +158,12 @@ export const BottomSheet = React.forwardRef<
   }, [findSnap, getDefaultSnap, maxHeight, maxSnap, minSnap])
 
   // New utility for using events safely
-  const asyncSet = useCallback<typeof set>(
+  const asyncSet = useCallback<typeof api>(
     // @ts-ignore
     ({ onRest, config: { velocity = 1, ...config } = {}, ...opts }) =>
       // @ts-expect-error
       new Promise((resolve) =>
-        set({
+        api.start({
           ...opts,
           config: {
             velocity,
@@ -186,7 +186,7 @@ export const BottomSheet = React.forwardRef<
           },
         })
       ),
-    [set, springConfig]
+    [api, springConfig]
   )
   const [current, send] = useMachine(overlayMachine, {
     devTools: debugging,
@@ -642,7 +642,7 @@ export const BottomSheet = React.forwardRef<
     // @TODO too many rerenders
     //send('DRAG', { y: newY, velocity })
     //*
-    set({
+    api.start({
       y: newY,
       ready: 1,
       maxHeight: maxHeightRef.current,
@@ -715,9 +715,16 @@ export const BottomSheet = React.forwardRef<
             if (onDismiss) onDismiss()
           }
         }}
+        style={{ touchAction: 'none' }}
       >
         {header !== false && (
-          <div key="header" data-rsbs-header ref={headerRef} {...bind()}>
+          <div
+            key="header"
+            data-rsbs-header
+            ref={headerRef}
+            {...bind()}
+            style={{ touchAction: 'none' }}
+          >
             {header}
           </div>
         )}
@@ -727,6 +734,7 @@ export const BottomSheet = React.forwardRef<
           data-rsbs-scroll
           ref={scrollRef}
           {...(expandOnContentDrag ? bind({ isContentDragging: true }) : {})}
+          style={{ touchAction: 'none' }}
         >
           <div data-rsbs-content ref={contentRef}>
             {children}
