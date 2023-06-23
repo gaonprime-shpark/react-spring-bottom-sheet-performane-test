@@ -1,12 +1,12 @@
 {
-  "name": "@gaonprime-shpark/react-spring-bottom-sheet-updated",
+  "name": "@parksunghyun0112/react-spring-bottom-sheet-updated",
   "description": "✨ Accessible, 🪄 Delightful, and 🤯 Performant. Built on react-spring for the web, and react-use-gesture.",
   "license": "MIT",
   "author": "Cody Olsen",
   "homepage": "https://react-spring-bottom-sheet.cocody.dev",
-  "repository": "https://github.com/gaonprime-shpark/react-spring-bottom-sheet-updated",
+  "repository": "https://github.com/gaonprime-shpark/react-spring-bottom-sheet-performane-test",
   "bugs": {
-    "url": "https://github.com/la55u/react-spring-bottom-sheet-updated/issues"
+    "url": "https://github.com/gaonprime-shpark/react-spring-bottom-sheet-performane-test"
   },
   "version": "1.0.3",
   "main": "dist/index.js",
