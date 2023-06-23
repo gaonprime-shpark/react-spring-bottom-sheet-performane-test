@@ -723,6 +723,7 @@ export const BottomSheet = React.forwardRef<
         )}
         <div
           key="scroll"
+          id="packageTest"
           data-rsbs-scroll
           ref={scrollRef}
           {...(expandOnContentDrag ? bind({ isContentDragging: true }) : {})}
